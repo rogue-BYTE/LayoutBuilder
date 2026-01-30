@@ -1,1 +1,20 @@
-WidgetPaletteComponent
+<div class="palette-container">
+  <h3>Widgets</h3>
+  <div class="widget-list"
+       cdkDropList
+       [cdkDropListData]="availableWidgets"
+       id="paletteList">
+    
+    <div class="widget-item" 
+         *ngFor="let widget of availableWidgets" 
+         cdkDrag 
+         [cdkDragData]="widget">
+      
+      <div class="widget-preview">
+        {{ widget.label }}
+      </div>
+      
+      <div *cdkDragPlaceholder class="widget-placeholder"></div>
+    </div>
+  </div>
+</div>
