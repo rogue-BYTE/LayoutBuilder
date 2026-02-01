@@ -1,10 +1,10 @@
-export interface Widget {
+export interface Item {
   id: string;
   type: string;
-  label: string;
+  name: string;
   x: number;
   y: number;
-  width: number;
-  height: number;
+  w: number;
+  h: number;
   data?: any;
 }

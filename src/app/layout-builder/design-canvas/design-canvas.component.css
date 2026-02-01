@@ -1,0 +1,68 @@
+.canvas-container {
+  height: 100%;
+  padding: 16px;
+  box-sizing: border-box;
+  background: #f0f0f0;
+}
+
+.canvas-area {
+  height: 100%;
+  background: #ffffff;
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.grid-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  background-image: 
+    radial-gradient(circle, #d0d0d0 1px, transparent 1px);
+  background-size: 20px 20px;
+  background-position: 10px 10px;
+}
+
+.empty-state {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: #999;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.empty-icon {
+  font-size: 48px;
+  color: #ccc;
+  margin-bottom: 12px;
+}
+
+.empty-state p {
+  font-size: 14px;
+  margin: 0;
+  color: #999;
+}
+
+.canvas-area.cdk-drop-list-dragging {
+  background-color: #f8f9ff;
+}
+
+.canvas-area.cdk-drop-list-dragging .grid-background {
+  background-image: 
+    radial-gradient(circle, #6366f1 1px, transparent 1px);
+}
+
+.canvas-area .cdk-drag-animating {
+  transition: none !important;
+}
+
+.cdk-drag-placeholder {
+  opacity: 0;
+}

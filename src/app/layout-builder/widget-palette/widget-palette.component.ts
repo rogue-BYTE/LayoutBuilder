@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Widget } from '../../models/widget.model';
 
 @Component({
   selector: 'app-widget-palette',
@@ -7,12 +6,18 @@ import { Widget } from '../../models/widget.model';
   styleUrls: ['./widget-palette.component.css']
 })
 export class WidgetPaletteComponent {
+  q = '';
 
-  availableWidgets: Partial<Widget>[] = [
-    { type: 'text', label: 'Text Input', width: 200, height: 60 },
-    { type: 'button', label: 'Button', width: 100, height: 40 },
-    { type: 'card', label: 'Card', width: 300, height: 200 },
-    { type: 'chart', label: 'Chart', width: 400, height: 300 }
+  list = [
+    { type: 'card', name: 'Card', w: 320, h: 220, icon: 'crop_square' },
+    { type: 'text', name: 'Text', w: 250, h: 100, icon: 'text_fields' },
+    { type: 'button', name: 'Button', w: 140, h: 80, icon: 'smart_button' }
   ];
 
+  get getData() {
+    if (!this.q.trim()) return this.list;
+    return this.list.filter(item => 
+      item.name.toLowerCase().includes(this.q.toLowerCase())
+    );
+  }
 }

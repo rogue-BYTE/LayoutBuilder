@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { LayoutBuilderComponent } from './layout-builder.component';
 import { WidgetPaletteComponent } from './widget-palette/widget-palette.component';
@@ -17,6 +18,7 @@ import { CanvasWidgetComponent } from './canvas-widget/canvas-widget.component';
   ],
   imports: [
     CommonModule,
+    FormsModule,
     DragDropModule
   ],
   exports: [

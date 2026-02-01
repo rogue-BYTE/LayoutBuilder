@@ -1,1 +1,54 @@
-CanvasWidgetComponent
+<div class="widget-wrapper" 
+     [style.width.px]="item.w" 
+     [style.height.px]="item.h">
+  
+  <div class="widget-header">
+    <span class="widget-label">{{ item.name }}</span>
+    <div class="header-actions">
+      <div class="drag-handle" cdkDragHandle title="Drag to move">
+        <span class="material-icons">drag_indicator</span>
+      </div>
+      <button class="remove-btn" (click)="onRemove($event)" title="Remove">
+        <span class="material-icons">close</span>
+      </button>
+    </div>
+  </div>
+  
+  <div class="widget-content" [ngSwitch]="item.type">
+    
+    <ng-container *ngSwitchCase="'card'">
+      <div class="card-preview">
+        <div class="card-image"></div>
+        <div class="card-body">
+          <div class="card-title"></div>
+          <div class="card-text"></div>
+          <div class="card-text short"></div>
+        </div>
+      </div>
+    </ng-container>
+    
+    <ng-container *ngSwitchCase="'text'">
+      <div class="text-input-wrapper">
+        <label class="input-label">Label</label>
+        <input type="text" class="text-input" placeholder="Enter text...">
+      </div>
+    </ng-container>
+    
+    <ng-container *ngSwitchCase="'button'">
+      <button class="button-preview">Button</button>
+    </ng-container>
+    
+    <ng-container *ngSwitchDefault>
+      <div class="default-preview">
+        <span class="material-icons">widgets</span>
+      </div>
+    </ng-container>
+    
+  </div>
+  
+  <div class="resize-handle" 
+       (mousedown)="onResizeStart($event)"
+       title="Drag to resize">
+    <span class="material-icons">drag_handle</span>
+  </div>
+</div>

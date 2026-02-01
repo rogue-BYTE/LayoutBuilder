@@ -1,1 +1,33 @@
-DesignCanvasComponent
+<div class="canvas-container">
+  <div class="canvas-area" 
+       #canvasArea
+       cdkDropList
+       id="canvasList"
+       [cdkDropListData]="items"
+       [cdkDropListConnectedTo]="['paletteList']"
+       [cdkDropListSortingDisabled]="true"
+       (cdkDropListDropped)="handleDrop($event)">
+    
+    <div class="grid-background"></div>
+    
+    <div class="empty-state" *ngIf="items.length === 0">
+      <span class="material-icons empty-icon">dashboard_customize</span>
+      <p>Drag widgets here to build your layout</p>
+    </div>
+    
+    <app-canvas-widget 
+      *ngFor="let item of items"
+      [item]="item"
+      [class.selected]="selId === item.id"
+      [style.left.px]="item.x"
+      [style.top.px]="item.y"
+      (remove)="deleteItem($event)"
+      (click)="selectItem(item.id)"
+      cdkDrag
+      [cdkDragData]="item"
+      [cdkDragBoundary]="canvasArea"
+      (cdkDragEnded)="updatePosition(item, $event)">
+    </app-canvas-widget>
+    
+  </div>
+</div>

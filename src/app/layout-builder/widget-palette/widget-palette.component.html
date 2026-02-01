@@ -1,20 +1,41 @@
 <div class="palette-container">
-  <h3>Widgets</h3>
-  <div class="widget-list"
+  <div class="search-box">
+    <span class="search-icon material-icons">search</span>
+    <input 
+      type="text" 
+      placeholder="Search Components" 
+      [(ngModel)]="q"
+      class="search-input">
+  </div>
+
+  <div class="section-header">
+    <span class="section-title">Widgets</span>
+  </div>
+
+  <div class="widget-grid"
        cdkDropList
-       [cdkDropListData]="availableWidgets"
+       #paletteList="cdkDropList"
+       [cdkDropListData]="getData"
+       [cdkDropListConnectedTo]="['canvasList']"
+       [cdkDropListSortingDisabled]="true"
        id="paletteList">
     
     <div class="widget-item" 
-         *ngFor="let widget of availableWidgets" 
+         *ngFor="let item of getData" 
          cdkDrag 
-         [cdkDragData]="widget">
+         [cdkDragData]="item">
       
-      <div class="widget-preview">
-        {{ widget.label }}
+      <div class="widget-icon-box">
+        <span class="material-icons widget-icon">{{ item.icon }}</span>
       </div>
+      <span class="widget-label">{{ item.name }}</span>
       
       <div *cdkDragPlaceholder class="widget-placeholder"></div>
+      
+      <div *cdkDragPreview class="drag-preview">
+        <span class="material-icons">{{ item.icon }}</span>
+        <span>{{ item.name }}</span>
+      </div>
     </div>
   </div>
 </div>
